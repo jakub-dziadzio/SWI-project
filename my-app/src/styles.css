@@ -1,0 +1,13 @@
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  /* For p element */
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
