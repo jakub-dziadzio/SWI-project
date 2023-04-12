@@ -149,7 +149,7 @@ const TodoTest = () => {
             ? "completed"
             : timeLeft[todo.id] <= 0
             ? "overdue"
-            : timeLeft[todo.id] <= 2
+            : timeLeft[todo.id] <= 1
             ? "due-soon"
             : "base"
         }>
