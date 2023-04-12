@@ -151,7 +151,7 @@ const TodoTest = () => {
             ? "overdue"
             : timeLeft[todo.id] <= 2
             ? "due-soon"
-            : ""
+            : "base"
         }>
           {editTodoId === todo.id ? (
             <div className="form-container">

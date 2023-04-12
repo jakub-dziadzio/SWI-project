@@ -133,7 +133,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  padding: 10px;
+  padding: 5px;
   animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -266,4 +266,24 @@
 .dropdown{
   margin-right: 1rem;
   margin-left: 1rem;
+}
+
+.form-container > .delete {
+  float: right;
+}
+
+.due-soon > div {
+  width: 100vw;
+}
+
+.completed > div {
+  width: 100vw;
+}
+
+.overdue > div {
+  width: 100vw;
+}
+
+.base > div {
+  width: 100vw;
 }
