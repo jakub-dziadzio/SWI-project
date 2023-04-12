@@ -1,111 +1,245 @@
+.form-container {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-container input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
 
 .todo-list {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 95%;
-    margin: auto;
-  }
-  
-  .todo-list label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .todo-list input[type="text"],
-  .todo-list input[type="date"] {
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .todo-list input[type="checkbox"] {
-    margin-right: 0.5rem;
-  }
-  
-  .todo-list button {
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .todo-list button:hover {
-    background-color: #0069d9;
-  }
-  
-  .todo-list button:active {
-    background-color: #005cbf;
-  }
-  
-  .todo-list span {
-    margin-left: 0.5rem;
-  }
-  
-  .todo-list li {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .todo-list li:hover {
-    background-color: #f5f5f5;
-  }
+  font-size: 1.2rem;
+  line-height: 1.5;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 95%;
+  margin: auto;
+  animation: bounceIn 1s ease;
+  height: auto;
+  max-height: calc(55vh - 50px);
+  overflow-y: scroll;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  .todo-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
   }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.todo-list label {
+  display: block;
+  margin-right: 0.5rem;
+}
+
+.todo-list input[type="text"],
+.todo-list input[type="date"] {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.todo-list input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.todo-list button {
+  padding: 0.3rem 0.7rem;
+  font-size: 1.1rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  float: right;
+}
+
+.fa-calendar{
+  padding-left: 3px;
+  padding-right: 10px;
+}
+
+.todo-list button:hover {
+  cursor: pointer;
   
-  .todo-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold;
+}
+
+.todo-list button.delete {
+  color: #fff;
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.todo-list button.edit {
+  color: #fff;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.todo-list button.delete:hover {
+  background-color: #c62828;
+  border-color: #c62828;
+}
+
+.todo-list button.edit:hover {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+}
+
+.todo-list button.cancel {
+  color: #fff;
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.todo-list button.save {
+  color: #fff;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.todo-list button.cancel:hover {
+  background-color: #c62828;
+  border-color: #c62828;
+}
+
+.todo-list button.save:hover {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+}
+
+.todo-list span {
+  margin-left: 0.5rem;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.todo-list li:last-child {
+  border-bottom: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .todo-form input[type="text"],
-  .todo-form input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  to {
+    opacity: 1;
   }
-  
-  .todo-form input[type="checkbox"] {
-    margin-right: 10px;
-  }
-  
-  .todo-form button[type="submit"] {
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .todo-form button[type="submit"]:hover {
-    background-color: #0062cc;
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
+}
+
+.todo-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 0px;
+}
+
+.todo-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.todo-form input {
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.todo-form input[type="text"],
+.todo-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.todo-form input[type="checkbox"] {
+  margin-left: 5px;
+}
+
+.todo-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.todo-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.error-message {
+  color: red;
+  animation-name: shake;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+.todo-list li.completed {
+  text-decoration: line-through;
+  color: green;
+  animation-name: completedAnimation;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes completedAnimation {
+  from { background-color: #f5f5f5 }
+  to { background-color: #14a32c8a; }
+}
+
+.error-animation {
+  animation: shake 0.3s ease-in-out forwards;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.overdue {
+  background-color: #9c160da2;
+}
+
+.due-soon {
+  background-color: #ff9d0bcb;
+}
