@@ -14,6 +14,9 @@ const TodoTest = () => {
   const [fieldsEmpty, setFieldsEmpty] = useState(false);
   const [timeLeft, setTimeLeft] = useState({});
 
+  const [sortBy, setSortBy] = useState('newest');
+  const [sortOrder, setSortOrder] = useState('desc');
+
   useEffect(() => {
     axios.get('http://localhost:8080/todos/')
       .then(response => setTodos(response.data))
@@ -87,11 +90,20 @@ const TodoTest = () => {
     calculateTimeLeft();
   }, [todos]);
 
+  let sortedTodos = [...todos];
+  if (sortBy === 'newest') {
+    sortedTodos.sort((a, b) => sortOrder === 'desc' ? b.id - a.id : a.id - b.id);
+  } else if (sortBy === 'oldest') {
+    sortedTodos.sort((a, b) => sortOrder === 'desc' ? a.id - b.id : b.id - a.id);
+  } else if (sortBy === 'dueDate') {
+    sortedTodos.sort((a, b) => sortOrder === 'desc' ? new Date(b.dueDate) - new Date(a.dueDate) : new Date(a.dueDate) - new Date(b.dueDate));
+  }
+
   return (
     <div>
       <h1>My To-Do List</h1>
       {fieldsEmpty && <p className="error-message error-animation fade-out-animation">Please fill in all fields.</p>}
-      <div class="form-container">
+      <div className="form-container">
         <form onSubmit={handleSubmit} className="todo-form">
           <label>
             Task Name
@@ -111,8 +123,25 @@ const TodoTest = () => {
           <button type="submit">Add To-do Task</button>
         </form>
       </div>
+      <div className="filter-buttons">
+      <label>
+        Sort By:
+        <select className='dropdown' value={sortBy} onChange={(event) => setSortBy(event.target.value)}>
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="dueDate">Due Date</option>
+        </select>
+      </label>
+      <label>
+        Sort Order:
+        <select className='dropdown' value={sortOrder} onChange={(event) => setSortOrder(event.target.value)}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </label>
+      </div>
       <ul className="todo-list">
-      {todos.map(todo => (
+      {sortedTodos.map(todo => (
         <li
         key={todo.id}
         className={

@@ -243,3 +243,27 @@
 .due-soon {
   background-color: #ff9d0bcb;
 }
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.filter-button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  
+}
+
+.filter-button.active {
+  text-decoration: underline;
+}
+
+.dropdown{
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
