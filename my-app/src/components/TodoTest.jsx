@@ -17,6 +17,8 @@ const TodoTest = () => {
   const [sortBy, setSortBy] = useState('newest');
   const [sortOrder, setSortOrder] = useState('desc');
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     axios.get('http://localhost:8080/todos/')
       .then(response => setTodos(response.data))
@@ -75,6 +77,7 @@ const TodoTest = () => {
       .catch(error => console.log(error));
   };
 
+
   useEffect(() => {
     const calculateTimeLeft = () => {
       const newTimeLeft = {};
@@ -91,13 +94,16 @@ const TodoTest = () => {
   }, [todos]);
 
   let sortedTodos = [...todos];
-  if (sortBy === 'newest') {
-    sortedTodos.sort((a, b) => sortOrder === 'desc' ? b.id - a.id : a.id - b.id);
-  } else if (sortBy === 'oldest') {
-    sortedTodos.sort((a, b) => sortOrder === 'desc' ? a.id - b.id : b.id - a.id);
-  } else if (sortBy === 'dueDate') {
-    sortedTodos.sort((a, b) => sortOrder === 'desc' ? new Date(b.dueDate) - new Date(a.dueDate) : new Date(a.dueDate) - new Date(b.dueDate));
-  }
+    if (searchTerm !== '') {
+      sortedTodos = sortedTodos.filter(todo => todo.task.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+    if (sortBy === 'newest') {
+      sortedTodos.sort((a, b) => sortOrder === 'desc' ? b.id - a.id : a.id - b.id);
+    } else if (sortBy === 'oldest') {
+      sortedTodos.sort((a, b) => sortOrder === 'desc' ? a.id - b.id : b.id - a.id);
+    } else if (sortBy === 'dueDate') {
+      sortedTodos.sort((a, b) => sortOrder === 'desc' ? new Date(b.dueDate) - new Date(a.dueDate) : new Date(a.dueDate) - new Date(b.dueDate));
+    }
 
   return (
     <div>
@@ -140,19 +146,17 @@ const TodoTest = () => {
         </select>
       </label>
       </div>
+      <div className="search-bar">
+        <label>
+        Search:
+        <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+      </label>
+      </div>
       <ul className="todo-list">
-      {sortedTodos.map(todo => (
+        {sortedTodos.map(todo => (
         <li
         key={todo.id}
-        className={
-          todo.completed
-            ? "completed"
-            : timeLeft[todo.id] <= 0
-            ? "overdue"
-            : timeLeft[todo.id] <= 1
-            ? "due-soon"
-            : "base"
-        }>
+        className={todo.completed ? "completed" : timeLeft[todo.id] <= 0 ? "overdue" : timeLeft[todo.id] <= 1 ? "due-soon" : "base"}>
           {editTodoId === todo.id ? (
             <div className="form-container">
               <label>

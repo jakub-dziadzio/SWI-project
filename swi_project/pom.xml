@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+	
 	  	<dependency>
     		<groupId>javax.persistence</groupId>
     		<artifactId>persistence-api</artifactId>
