@@ -1,9 +1,9 @@
 import React from 'react';
-import TodoTest from '../components/TodoTest';
+import Todo from '../components/Todo';
 
 const Home = () => {
   return (
-    <><TodoTest />
+    <><Todo />
     </>
   );
 };

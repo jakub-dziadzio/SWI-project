@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './TodoTest.css';
+import './Todo.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
-const TodoTest = () => {
+const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -193,4 +193,4 @@ const TodoTest = () => {
         </div>
         );
         }
-export default TodoTest;
+export default Todo;
